@@ -24,5 +24,5 @@ REACT_APP_API_URL=http://<span></span>localhost:8080
 
 Para executar a aplicação, abra um terminal e execute os seguintes comandos:
 
-**yarn install**
+**yarn install**\
 **yarn start**
