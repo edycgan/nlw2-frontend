@@ -80,9 +80,15 @@
   margin-right: 2.4rem;
 }
 
+.statistics {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .total-connections {
   font-size: 1.4rem;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -90,6 +96,19 @@
 
 .total-connections img {
   margin-left: 0.8rem;
+}
+
+.more-statistics {
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.more-statistics-link {
+  text-decoration: none;
+  cursor: pointer;
+  color: var(--color-text-in-primary);
 }
 
 @media (min-width: 1100px) {
@@ -101,7 +120,7 @@
     grid-template-columns: 2fr 1fr 1fr;
     grid-template-areas:
       "logo hero hero"
-      "buttons buttons total";
+      "buttons buttons statistics";
   }
 
   .logo-container {
@@ -134,8 +153,8 @@
     font-size: 2.4rem;
   }
 
-  .total-connections {
-    grid-area: total;
+  .statistics {
+    grid-area: statistics;
     justify-self: end;
   }
 }

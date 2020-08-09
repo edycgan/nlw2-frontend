@@ -47,10 +47,17 @@ function Landing() {
           </Link>
         </div>
 
-        <span className="total-connections">
-          Total de {totalConnections} conexões já realizadas
-          <img src={purpleHeartIcon} alt="Coração Roxo" />
-        </span>
+        <div className="statistics">
+          <span className="total-connections">
+            Total de {totalConnections} conexões já realizadas
+            <img src={purpleHeartIcon} alt="Coração Roxo" />
+          </span>
+          <span className="more-statistics">
+            <Link to="/statistics" className="more-statistics-link">
+              Mais Estatísticas
+            </Link>
+          </span>
+        </div>
       </div>
     </div>
   );
