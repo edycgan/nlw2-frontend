@@ -3,13 +3,16 @@ import { useHistory } from "react-router-dom";
 
 import PageHeader from "../../components/PageHeader";
 import Input from "../../components/Input";
+import CurrencyInput from "../../components/CurrencyInput";
+import PhoneNumberInput from "../../components/PhoneNumberInput";
 import Textarea from "../../components/Textarea";
 import Select from "../../components/Select";
+
+import api from "../../services/api";
 
 import warningIcon from "../../assets/images/icons/warning.svg";
 
 import "./styles.css";
-import api from "../../services/api";
 
 function TeacherForm() {
   const history = useHistory();
@@ -54,8 +57,47 @@ function TeacherForm() {
     setScheduleItems(updateScheduleItems);
   }
 
+  function validateFields() {
+    let valid = true;
+
+    if (name.trim().length === 0) {
+      valid = false;
+    }
+
+    if (avatar.trim().length === 0) {
+      valid = false;
+    }
+
+    if (whatsapp.length < 11) {
+      valid = false;
+    }
+
+    if (bio.trim().length === 0) {
+      valid = false;
+    }
+
+    if (subject === "") {
+      valid = false;
+    }
+
+    if (cost === "") {
+      valid = false;
+    }
+
+    if (scheduleItems.length === 0) {
+      valid = false;
+    }
+
+    return valid;
+  }
+
   function handleCreateClass(e: FormEvent) {
     e.preventDefault();
+
+    if (!validateFields()) {
+      alert("Por favor, preencha todos os campos.");
+      return;
+    }
 
     api
       .post("classes", {
@@ -93,6 +135,7 @@ function TeacherForm() {
               name="name"
               label="Nome completo"
               value={name}
+              maxLength={100}
               onChange={(e) => {
                 setName(e.target.value);
               }}
@@ -101,21 +144,23 @@ function TeacherForm() {
               name="avatar"
               label="Avatar"
               value={avatar}
+              maxLength={200}
               onChange={(e) => {
                 setAvatar(e.target.value);
               }}
             />
-            <Input
+            <PhoneNumberInput
               name="whatsapp"
               label="WhatsApp"
               value={whatsapp}
-              onChange={(e) => {
-                setWhatsapp(e.target.value);
+              onValueChange={(values: any) => {
+                setWhatsapp(values.value);
               }}
             />
             <Textarea
               name="bio"
               label="Biografia"
+              maxLength={1000}
               value={bio}
               onChange={(e) => {
                 setBio(e.target.value);
@@ -145,12 +190,13 @@ function TeacherForm() {
                 { value: "Química", label: "Química" },
               ]}
             />
-            <Input
+            <CurrencyInput
               name="cost"
               label="Custo da sua hora por aula"
               value={cost}
-              onChange={(e) => {
-                setCost(e.target.value);
+              maxLength={11}
+              onValueChange={(values: any) => {
+                setCost(values.value);
               }}
             />
           </fieldset>
