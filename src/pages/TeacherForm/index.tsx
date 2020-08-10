@@ -143,6 +143,7 @@ function TeacherForm() {
             <Input
               name="avatar"
               label="Avatar"
+              placeholder="URL de uma imagem. Por exemplo http://site.com/imagem.png"
               value={avatar}
               maxLength={200}
               onChange={(e) => {
