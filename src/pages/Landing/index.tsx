@@ -8,6 +8,7 @@ import landingImg from "../../assets/images/landing.svg";
 import studyIcon from "../../assets/images/icons/study.svg";
 import giveClassIcon from "../../assets/images/icons/give-classes.svg";
 import purpleHeartIcon from "../../assets/images/icons/purple-heart.svg";
+import githubIcon from "../../assets/images/icons/github.svg";
 
 import "./styles.css";
 
@@ -58,6 +59,13 @@ function Landing() {
             </Link>
           </span>
         </div>
+      </div>
+
+      <div className="about-container">
+        <span>Desenvolvido por Edyr Costa.</span>
+        <a href="https://github.com/edyrcosta">
+          <img src={githubIcon} alt="GitHub" />
+        </a>
       </div>
     </div>
   );
