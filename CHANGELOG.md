@@ -1,3 +1,7 @@
+## v1.3
+
+- Algumas correções, alteração simples de layout e adição de favicons.
+
 ## v1.2
 
 - Uso do pacote react-number-format para formatação de campos que recebem números.
